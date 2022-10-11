@@ -1,0 +1,52 @@
+.answers-to-questions {
+    &__decor {
+        position: absolute;
+        right: -5vw;
+        bottom: -5%;
+        max-width: 28vw;
+        display: none;
+
+        &.isDesctop {
+            display: block;
+        }
+    }
+
+    &__title {
+        margin-bottom: 30px;
+
+        &.isLaptop {
+            margin-bottom: 75px;
+        }
+
+        &.isDesctop {
+            margin-bottom: vw(75px);
+        }
+    }
+
+    &__accordion {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &.isLaptop {
+            margin-bottom: 30px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        &.isDesctop {
+            max-width: vw(996px);
+            margin-bottom: vw(30px);
+        
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

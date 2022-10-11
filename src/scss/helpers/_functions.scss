@@ -1,0 +1,15 @@
+@use "sass:math";
+
+@function rem($px) {
+    @return math.div($px, 16) +rem;
+}
+
+@function strip-units($number) {
+    @return math.div($number, $number * 0 + 1);
+}
+
+@function vw($target) {
+    // @debug "start value: #{$target}, finish value #{strip-units($target)}";
+    $vw-result: math.div(strip-units($target) * 100, 1920) * 1vw;
+    @return $vw-result;
+}

@@ -1,0 +1,6 @@
+.preloader
+    +container
+        .preloader__content 
+            +logo.preloader__logo(:class='{isDesctop, isTablet, isLaptop}')
+            svg(class='preloader__spinner' viewbox='0 0 80 80', :class='{isDesctop, isTablet, isLaptop}')
+                circle.preloader__spinner-circle(style='fill: transparent; stroke-linecap: round;' stroke='currentColor' cx='40' cy='40' r='35')

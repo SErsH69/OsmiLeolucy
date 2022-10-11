@@ -1,0 +1,208 @@
+.first-screen {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    $screen: &;
+
+    &__content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto 200px;
+        grid-template-areas: 'main main' 'left right';
+        grid-gap: 100px 0;
+        width: 100%;
+
+        &.isLaptop {
+            grid-template-columns: 1fr 535px 1fr;
+            grid-template-rows: auto;
+            grid-template-areas: 'left main right';
+            grid-gap: 0 20px;
+        }
+
+        &.isDesctop {
+            grid-template-columns: 1fr vw(635px) 1fr;
+            grid-template-rows: auto;
+            grid-template-areas: 'left main right';
+            grid-gap: 0 vw(20px);
+            .btn {
+                max-width: 300px;
+                width: 100%;
+            }
+        }
+    }
+    &__text {
+        font-family: "Mulish";
+        margin-bottom: 32px;
+        text-align: center;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 140%;
+        color: #F9F9F9;
+        &.isDesctop {
+            font-size: 18px;
+        }
+    }
+
+    &__left,
+    &__right {
+        display: flex;
+        align-items: center;
+        min-width: 0;
+    }
+
+    &__left {
+        grid-area: left;
+        justify-content: flex-start;
+    }
+
+    &__center {
+        display: flex;
+        flex-direction: column;
+        // padding-left: 40px;
+        // padding-right: 40px;
+        align-items: center;
+        justify-content: center;
+        grid-area: main;
+    }
+
+    &__title, &__subtitle {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    &__title {
+        &.isLaptop {
+            margin-bottom: 30px;
+        }
+        
+        &.isDesctop {
+            margin-bottom: vw(30px);
+        }
+    }
+
+    &__subtitle {
+        &.isLaptop {
+            margin-bottom: 40px;
+        }
+        
+        &.isDesctop {
+            margin-bottom: vw(40px);
+        }
+    }
+
+    &__right {
+        grid-area: right;
+        justify-content: flex-end;
+    }
+
+    &__select {
+        height: 100%;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        min-width: 0;
+
+        &--active {
+            #{$screen}__animal {
+                &:not(&--hidden) {
+                    transform: scale(1.2);
+                }
+            }
+            
+            #{$screen}__animal-food {
+            
+                &--left {
+                    left: -20%;
+                    opacity: 1;
+                }
+            
+                &--right {
+                    right: -20%;
+                    opacity: 1;
+                }
+            }
+        }
+
+        &:hover {
+            #{$screen}__animal {
+                &:not(&--hidden) {
+                    transform: scale(1.2);
+                }
+            }
+
+            #{$screen}__animal-food {
+
+                &--left {
+                    left: 0;
+                    opacity: 1;
+                }
+
+                &--right {
+                    right: 0;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    &__animal {
+        height: 100%;
+        transform: scale(1);
+        pointer-events: none;
+        transition: all $ease05;
+        display: block;
+
+        &:not(&--hidden) {
+            position: absolute;
+            bottom: 0;
+        }
+
+        &--left {
+            right: 0;
+            transform-origin: left bottom;
+        }
+        
+        &--right {
+            left: 0;
+            transform-origin: right bottom;
+        }
+
+        &--hidden {
+            position: relative;
+            opacity: 0;
+        }
+    }
+
+    &__animal-food {
+        position: absolute;
+        max-width: 85%;
+        top: 10%;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-50%);
+        transition: all $ease05;
+
+        &--left {
+            left: -100%;
+        }
+
+        &--right {
+            right: -100%;
+        }
+
+        &.isDesctop {
+            max-width: 70%;
+            top: 35%;
+            max-width: unset;
+            width: vw(700px - 205px);
+            // height: vw(700px);
+        }
+    }
+
+    &__btn {
+        &.isLaptop {
+            margin-bottom: 60px;
+        }
+    }
+}
